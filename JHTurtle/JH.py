@@ -26,6 +26,7 @@ def drawwall():
     draw.goto(-280, 250)
     draw.speed(2)
 
+
 def L():  # 재시작하는 함수
     global playing
     global point
@@ -35,6 +36,7 @@ def L():  # 재시작하는 함수
         middle.clear()
         playing = True
         travel()
+
 
 playing = True
 
@@ -102,7 +104,11 @@ def redmove():
 def travel():
     global speed
     global playing
-    spaceship.forward(speed)  # 앞으로 몇 칸 가라
+
+    spaceship.forward(speed)
+    if (spaceship.xcor() >= 280 or spaceship.ycor() <= -250 or spaceship.xcor() <= -280 or spaceship.ycor() >= 250):
+        spaceship.forward(-speed)  # 앞으로 몇 칸 가라 : 밖에 나가지 않았을 때
+        # 논리연산자 : A and B, A or B, not A
     redmove()
     gr()
     global point
@@ -128,3 +134,9 @@ config()
 travel()
 
 wn.mainloop()
+
+# "벽에 닿으면" : 좌우 280, -280
+# 내 위치의 x좌표 > 280 (오른쪽으로 나갔다)
+# 내 위치의 x좌표 < -280 (왼쪽으로 나갔다)
+
+# randint(두개의 인자를 받는다 200, -200사이 200, -200사이) if(두개의 인자) 그러면 뒤로 움직임

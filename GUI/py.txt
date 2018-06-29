@@ -1,0 +1,65 @@
+﻿from tkinter import *
+
+repository = "C:\\Users\\juyon\\Desktop\\PythonProject"
+
+class LOL(Frame):
+	def createWidgets(self):
+		global photo
+		photo = PhotoImage(file = "LOL.png")
+
+		self.label = Label(self)
+		self.label["image"] = photo
+		self.label.pack({"side": "left"})
+
+		f = open("LOL.txt", "r")
+		self.text = Label(self)
+		self.text["text"] = f.read()
+		self.text["font"] = ("굴림", 20)
+		self.text.pack({"side": "left"})
+
+	def __init__(self, master=None):
+		Frame.__init__(self, master)
+		self.pack()
+		self.createWidgets()
+
+class Overwatch(Frame):
+	def createWidgets(self):
+		global app
+		global photo
+		photo = PhotoImage(file = "Overwatch.png")
+
+		self.label = Label(self)
+		self.label["image"] = photo
+		self.label.pack({"side": "left"})
+
+		f = open("Overwatch.txt", "r")
+		self.text = Label(self)
+		self.text["text"] = f.read()
+		self.text["font"] = ("굴림", 20)
+		self.text.pack({"side": "left"})
+
+	def __init__(self, master=None):
+		Frame.__init__(self, master)
+		self.pack()
+		self.createWidgets()
+
+root = Tk()
+root.title("게임 설명서")
+
+def Func() :
+	if var.get() == 1 :
+		app = LOL(master = Toplevel())
+	if var.get() == 2 :
+		app = Overwatch(master = Toplevel())
+
+var = IntVar()
+rb1 = Radiobutton(root, text = "League of Legends", variable = var, value = 1)
+rb2 = Radiobutton(root, text = "Overwatch", variable = var, value = 2)
+
+button = Button(root, text = "commit", command = Func)
+
+rb1.pack()
+rb2.pack()
+button.pack()
+
+root.mainloop()
