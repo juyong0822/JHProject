@@ -1,3 +1,8 @@
+# idea files
+Pacman/.idea
+JHTurtle/.idea
+GUI/.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
